@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { Container, TextContainer, InfosContainer, CodeItem } from './styles';
-import imgPicture from '../../assets/pessoa.webp';
+import imgPicture from '../../assets/perfil.webp';
 
 function HomeHero() {
   return (
