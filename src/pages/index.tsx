@@ -1,6 +1,6 @@
-import { Head } from 'next/document';
-import Header from '../components/header';
+import Header from '../components/Header';
 import HomeHero from '../components/HomeHero';
+import ProfessionalExperience from '../components/ProfessionalExperience';
 import { HomeContainer } from '../styles/HomeStyles';
 
 export default function Home() {
@@ -9,6 +9,7 @@ export default function Home() {
       <Header />
       <main className="container">
         <HomeHero />
+        <ProfessionalExperience />
       </main>
 
     </HomeContainer>
