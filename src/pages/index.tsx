@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import Header from '../components/header';
 import HomeHero from '../components/HomeHero';
 import ProfessionalExperience from '../components/ProfessionalExperience';
 import { HomeContainer } from '../styles/HomeStyles';
