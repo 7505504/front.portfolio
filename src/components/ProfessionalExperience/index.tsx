@@ -10,7 +10,7 @@ function ProfessionalExperience() {
       <ExperienceItem
             year="10/2020"
             title="Dev Back-end Assistente"
-            description="Sustentação de sistemas legados e aplicações mais recentes. Correção em sistemas e criação de APIs .NET"
+            description="Sustentação de sistemas legados e aplicações mais recentes. Correção em sistemas e criação de APIs REST/RESTful .NET"
           />
       <ExperienceItem
             year="05/2021"
