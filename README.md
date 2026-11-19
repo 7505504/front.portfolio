@@ -32,3 +32,9 @@ Keep the original `main` branch intact. Review and test this V2 branch first. Co
 
 ## Notes
 Content is based on the professional résumé. No confidential implementation details or invented performance metrics are included. Contact is provided through an email link. AI-assisted engineering is described as specification-first with human review and validation.
+
+## Case studies
+
+Four bilingual case studies: Hype Games, PayHype, Distributed B2B Micro-commerce, and PinHype. The case studies describe the author's professional involvement, not company ownership. Technical details are high-level, and the count of 500+ B2B integrations belongs to the PinHype platform rather than to the author individually.
+
+Project screenshots supplied for this work are intentionally **not published** until the owner authorizes their public reuse. A copyright notice alone is not permission to publish third-party assets.

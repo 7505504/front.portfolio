@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {ArrowRight,ArrowUpRight,ArrowLeft,Github,Mail} from 'lucide-react';
+import {ArrowRight,ArrowUpRight,ArrowLeft,Github,Mail,Layers,Package,ShoppingBag,CreditCard} from 'lucide-react';
 import {copy,type Locale} from '@/lib/content';
 export function Header({locale}:{locale:Locale}){
  const t=copy[locale]; const base='/'+locale;
@@ -9,10 +9,30 @@ export function Footer({locale}:{locale:Locale}){
  return <footer className="footer wrap"><span>© {new Date().getFullYear()} Caio Andrade</span><div className="social"><a href="https://github.com/7505504" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={20}/></a><a href="mailto:caioandradedevcontato@gmail.com" aria-label="Email"><Mail size={20}/></a></div><Link href={'/'+locale+'/#top'}>↑ Top</Link></footer>;
 }
 export function SectionLabel({children}:{children:React.ReactNode}){return <div className="section-label"><i/>{children}</div>}
+
+const cardIcons = [ShoppingBag, CreditCard, Layers, Package];
 export function CaseCards({locale}:{locale:Locale}){
- return <div className="case-grid">{copy[locale].projects.map((p,i)=><Link key={p.slug} href={'/'+locale+'/projects/'+p.slug} className={'case case-'+p.slug}><span className="case-symbol">{i===0?'▣':'◇'}</span><div><h3>{p.name}</h3><p>{p.summary}</p><ArrowRight size={22}/></div><span className="case-visual" aria-hidden="true"/></Link>)}</div>;
+ const cards=copy[locale].projects;
+ return <div className="case-grid">{cards.map((p,i)=>{
+  const Icon=cardIcons[i];
+  return <Link key={p.slug} href={'/'+locale+'/projects/'+p.slug} className={'case case-'+p.slug}>
+    <span className="case-symbol"><Icon size={24} strokeWidth={1.6}/></span>
+    <div className="case-content">
+      <h3>{p.name}</h3>
+      <p>{p.summary}</p>
+      <span className="case-tags">{p.tags.slice(0,3).map(tag=><span key={tag}>{tag}</span>)}</span>
+      <span className="case-link"><ArrowRight size={22}/></span>
+    </div>
+  </Link>;
+ })}</div>;
 }
 export function ProjectNavigation({locale,slug}:{locale:Locale,slug:string}){
- const t=copy[locale],other=t.projects.find(p=>p.slug!==slug);
- return <div className="project-navigation"><Link href={'/'+locale+'/projects'}><ArrowLeft size={17}/>{t.all}</Link>{other&&<Link href={'/'+locale+'/projects/'+other.slug}>{t.next}: {other.name}<ArrowRight size={17}/></Link>}</div>;
+ const t=copy[locale],index=t.projects.findIndex(p=>p.slug===slug);
+ const prev=index>0?t.projects[index-1]:null;
+ const next=index>=0&&index<t.projects.length-1?t.projects[index+1]:null;
+ return <nav className="project-navigation" aria-label="Case study navigation">
+    <Link href={'/'+locale+'/projects'}><ArrowLeft size={17}/>{t.all}</Link>
+    {prev&&<Link href={'/'+locale+'/projects/'+prev.slug}><ArrowLeft size={17}/>{t.previous}: {prev.name}</Link>}
+    {next&&<Link href={'/'+locale+'/projects/'+next.slug}>{t.next}: {next.name}<ArrowRight size={17}/></Link>}
+ </nav>;
 }
