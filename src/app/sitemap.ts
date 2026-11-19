@@ -1,0 +1,2 @@
+import type { MetadataRoute } from 'next';
+export default function sitemap():MetadataRoute.Sitemap{const host='https://caioandradedev.vercel.app';return ['en','pt-br'].flatMap(l=>['','/projects','/projects/payments','/projects/ecommerce'].map(p=>({url:host+'/'+l+p})));}
