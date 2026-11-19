@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import {ArrowRight,ArrowUpRight,ArrowLeft,Github,Mail,Layers,Package,ShoppingBag,CreditCard} from 'lucide-react';
 import {copy,type Locale} from '@/lib/content';
 export function Header({locale}:{locale:Locale}){
@@ -10,12 +11,14 @@ export function Footer({locale}:{locale:Locale}){
 }
 export function SectionLabel({children}:{children:React.ReactNode}){return <div className="section-label"><i/>{children}</div>}
 
+const caseThumbnails:Record<string,string>={hype:'/cases/hype-1.jpg',payments:'/cases/payhype-1.jpg',microcommerce:'/cases/microcommerce-1.jpg'};
 const cardIcons = [ShoppingBag, CreditCard, Layers, Package];
 export function CaseCards({locale}:{locale:Locale}){
  const cards=copy[locale].projects;
  return <div className="case-grid">{cards.map((p,i)=>{
   const Icon=cardIcons[i];
   return <Link key={p.slug} href={'/'+locale+'/projects/'+p.slug} className={'case case-'+p.slug}>
+    {caseThumbnails[p.slug]&&<span className="case-thumbnail"><Image src={caseThumbnails[p.slug]} width={900} height={520} alt="" sizes="(max-width: 720px) 100vw, 50vw" /></span>}
     <span className="case-symbol"><Icon size={24} strokeWidth={1.6}/></span>
     <div className="case-content">
       <h3>{p.name}</h3>
