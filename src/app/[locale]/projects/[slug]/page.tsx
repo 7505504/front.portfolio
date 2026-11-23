@@ -42,13 +42,11 @@ export default async function Project({params}:Params){
    <h1>{project.name}</h1>
    <p className="inner-lede">{project.sub}</p>
    <div className="tags">{project.tags.map(tag=><span key={tag}>{tag}</span>)}</div>
-   {gallery.length ? <div className="project-gallery" aria-label={lang==='en'?'Product screenshots':'Capturas dos produtos'}>
+   {gallery.length > 0 && <div className="project-gallery" aria-label={lang==='en'?'Product screenshots':'Capturas dos produtos'}>
      {gallery.map((item,i)=><figure key={item.src}>
        <Image src={item.src} alt={lang==='en'?item.altEn:item.altPt} width={item.width} height={item.height} sizes="(max-width: 720px) 100vw, 50vw" />
        <figcaption>{lang==='en'?'Public interface example':'Exemplo de interface pública'} · {i+1}/{gallery.length}</figcaption>
      </figure>)}
-   </div> : <div className={'project-banner banner-'+slug} role="img" aria-label={project.sub}>
-      <span aria-hidden="true">PINHYPE</span>
    </div>}
    <div className="case-details">
      <section><h2>{t.overview}</h2><p>{project.overview}</p></section>
